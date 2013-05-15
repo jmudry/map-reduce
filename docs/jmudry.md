@@ -1,4 +1,6 @@
-# Obliczanie liczby pi metoda Monte Carlo
+# Obliczanie liczby pi metodą Monte Carlo
+
+### *Jan Mudry*
 
 ## Parametry podziałowe
 ```js
@@ -6,7 +8,7 @@ parts = 10; //podział na 10*10 części
 n = 10000; // ilośc losowanych punktów w kazdym fragmencie
 ```
 ## Opis
-Opis metody: [Metoda_Monte_Carlo](http://pl.wikipedia.org/wiki/Metoda_Monte_Carlo)
+Opis metody: [Metoda_Monte_Carlo](http://pl.wikipedia.org/wiki/Metoda_Monte_Carlo).
 
 W naszym przypadku dzielimy obszar generowania punktów na ```parts*parts``` części i w każdym z nich generujemy ```n``` punktów i zliczamy poprzez reduce ilość punktów w okręgu.
 
@@ -14,7 +16,12 @@ W naszym przypadku dzielimy obszar generowania punktów na ```parts*parts``` cz�
 ```js
 for (i = 0; i < parts; i += 1) {
   for (j = 0; j < parts; j += 1) {
-    db.pi_parts.insert({x_from: i/parts, x_to: (i+1)/parts, y_from: j/parts, y_to: (j+1)/parts, n: n, parts: parts })
+    db.pi_parts.insert({
+      x_from: i/parts, 
+      x_to: (i+1)/parts, 
+      y_from: j/parts, 
+      y_to: (j+1)/parts, n: n, parts: parts 
+    })
   }
 }
 ```
@@ -51,7 +58,7 @@ db.pi_parts.mapReduce(m, r, {out: "pi"});
 
 ### Analiza
 
-Może mało dokładna metoda, lecz dobrze obrazuje uzycie map reduce
+Może mało dokładna metoda, lecz dobrze obrazuje użycie MapReduce.
 
 ## Linki
 * [Skrypt](/scripts/mapReduce_jmudry.js)
